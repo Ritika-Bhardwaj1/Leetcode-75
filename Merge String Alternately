@@ -1,0 +1,27 @@
+class Solution {
+    public String mergeAlternately(String word1, String word2) {
+        int len1 = word1.length(); // takes length of word1
+        int len2 = word2.length(); // takes length of word2
+        int min_len = Math.min(len1, len2); //takes the minimum length of len1 and len2
+
+        String longerString = ""; 
+
+        if (min_len == len1){ // if word1 has the minimum length => word2 is the longer string 
+            longerString = word2;
+        }else{ 
+            longerString = word1;
+        }
+
+        char c1[] = word1.toCharArray(); //since we have to add alternate characters convert each word to a char array
+        char c2[] = word2.toCharArray();
+        StringBuilder sb = new StringBuilder(); //string builder object creation
+        for (int i = 0; i < min_len; i++){ //iterate the loop till the min_len of the 2 words 
+            sb.append(c1[i]); //for every iteartion it adds a letter from word1 and then word2 and the reiterates the loop
+            sb.append(c2[i]);
+        }
+        sb.append(longerString.substring(min_len)); // the longer string has more characters than the min_len which have to appended with no changes towards the end, take the substring from min_len till the end 
+        return sb.toString();
+
+
+    }
+}
